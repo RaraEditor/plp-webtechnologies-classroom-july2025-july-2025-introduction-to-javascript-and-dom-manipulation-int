@@ -1,0 +1,136 @@
+/js-fundamentals-assignment
+   ├── index.html
+   ├── style.css
+   └── script.js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Fundamentals Assignment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 id="main-title">🚀 Mastering JavaScript Fundamentals</h1>
+
+  <section>
+    <h2>Part 1: Basics</h2>
+    <button onclick="checkAge()">Check Age</button>
+    <p id="age-result"></p>
+  </section>
+
+  <section>
+    <h2>Part 2: Functions</h2>
+    <button onclick="showTotal()">Calculate Total</button>
+    <p id="total-result"></p>
+  </section>
+
+  <section>
+    <h2>Part 3: Loops</h2>
+    <button onclick="countdown()">Start Countdown</button>
+    <ul id="countdown-list"></ul>
+  </section>
+
+  <section>
+    <h2>Part 4: DOM</h2>
+    <button id="toggle-btn">Toggle Color</button>
+    <p id="toggle-text">Click the button to change my color!</p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  line-height: 1.6;
+}
+
+h1 {
+  color: darkblue;
+  text-align: center;
+}
+
+button {
+  margin-top: 5px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background: teal;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: darkslategray;
+}
+
+.highlight {
+  color: red;
+  font-weight: bold;
+}
+// ============================================
+// Part 1: JavaScript Basics (variables + conditionals)
+// ============================================
+
+function checkAge() {
+  let age = prompt("Enter your age:");
+  if (age >= 18) {
+    document.getElementById("age-result").innerText = "✅ You are an adult!";
+  } else {
+    document.getElementById("age-result").innerText = "❌ You are underage.";
+  }
+}
+
+// ============================================
+// Part 2: Functions (reusable logic)
+// ============================================
+
+function calculateTotal(price, quantity) {
+  return price * quantity;
+}
+
+function showTotal() {
+  let total = calculateTotal(200, 3); // Example: 200 * 3
+  document.getElementById("total-result").innerText =
+    "Total cost = " + total;
+}
+
+// ============================================
+// Part 3: Loops (repetition)
+// ============================================
+
+function countdown() {
+  let list = document.getElementById("countdown-list");
+  list.innerHTML = ""; // clear previous items
+
+  for (let i = 5; i >= 1; i--) {
+    let li = document.createElement("li");
+    li.innerText = i;
+    list.appendChild(li);
+  }
+  let li = document.createElement("li");
+  li.innerText = "🚀 Lift Off!";
+  list.appendChild(li);
+}
+
+// ============================================
+// Part 4: DOM Manipulation
+// ============================================
+
+// Example 1: Event listener to toggle color
+document.getElementById("toggle-btn").addEventListener("click", function () {
+  let text = document.getElementById("toggle-text");
+  text.classList.toggle("highlight");
+});
+
+// Example 2: Change text dynamically
+document.getElementById("main-title").addEventListener("mouseover", function () {
+  document.getElementById("main-title").innerText =
+    "🌟 You're learning JavaScript like a pro!";
+});
+
+// Example 3: Create a new element dynamically
+let newNote = document.createElement("p");
+newNote.innerText = "💡 DOM allows us to create elements on the fly.";
+document.body.appendChild(newNote);
